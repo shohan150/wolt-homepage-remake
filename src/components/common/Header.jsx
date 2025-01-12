@@ -1,51 +1,40 @@
+import Image from "next/image";
+import Link from "next/link";
+import { FaAngleDown } from "react-icons/fa6";
+import { IoLocationSharp, IoSearch } from "react-icons/io5";
+import logo from "../../../public/logo.png";
 
-const Header = () => {
+export default function Header() {
   return (
-    <header className="flex items-center justify-between p-4 bg-white shadow-md">
+    <header className="fixed top-0 left-0 right-0 flex items-center justify-between gap-12 px-4 py-2 bg-white shadow-md z-50">
       {/* Left Side: Logo */}
-      <div className="flex items-center space-x-4">
-        <img src="/logo.png" alt="Wolt Logo" className="h-6" />
-        <div className="flex items-center space-x-2 text-sm">
-          <span>Kerava</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
+      <div className="flex items-center gap-4">
+        <Image src={logo} alt="Wolt Logo" className="w-28 h-16" />
+        <div className="flex items-center gap-4 text-sm text-primary">
+          <IoLocationSharp className="text-4xl bg-primaryLight hover:bg-primaryHover p-[6px] rounded-full" />
+          <span className="font-semibold">Kerava</span>
+          <FaAngleDown />
         </div>
       </div>
 
       {/* Center: Search Bar */}
-      <div className="flex-1 mx-4">
+      <div className="mx-4">
         <div className="relative">
           <input
             type="text"
             placeholder="Search in Wolt..."
-            className="w-full pl-10 pr-4 py-2 rounded-full bg-gray-200 text-sm focus:outline-none"
+            className="w-60 pl-10 pr-4 p-2 rounded-full bg-gray-200 text-sm focus:outline-primaryDark"
           />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 10a4 4 0 100-8 4 4 0 000 8zm0 2a9 9 0 100-18 9 9 0 000 18zm-7-2h7m4 0h7m-2 0a2 2 0 11-4 0" />
-          </svg>
+            <IoSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-600" />
         </div>
       </div>
 
       {/* Right Side: Auth Links */}
       <div className="flex items-center space-x-4">
-        <a href="#" className="text-sm text-gray-600">Log in</a>
-        <a href="#" className="text-sm text-white bg-blue-500 px-4 py-2 rounded-full">Sign up</a>
+        <Link href="#" className="text-gray-800">Log in</Link>
+        <Link href="#" className="text-primary bg-primaryLight hover:bg-primaryHover px-4 py-2 rounded-md">Sign up</Link>
       </div>
     </header>
   );
 };
 
-export default Header;
